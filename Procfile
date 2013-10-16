@@ -1,1 +1,1 @@
-web: bin/hubot --adapter hipchat -n Hubot
+web: bin/hubot --adapter hipchat --name Marvin

@@ -1,1 +1,25 @@
-["redis-brain.coffee", "tweet.coffee", "shipit.coffee"]
+[
+  "applause.coffee",
+  "aww.coffee",
+  "base64.coffee",
+  "bees.coffee",
+  "bitcoin.coffee",
+  "bitly.coffee",
+  "botsnack.coffee",
+  "celery-man.coffee",
+  "dealwithit.coffee",
+  "days_since.coffee",
+  "darksky.coffee",
+  "countdown.coffee",
+  "commandlinefu.coffee",
+  "cloudapp.coffee",
+  "chuck-norris.coffee",
+  "facepalm.coffee",
+  "giphy.coffee",
+  "imdb.coffee",
+  "spotify.coffee",
+  "trolololo.coffee",
+  "redis-brain.coffee",
+  "tweet.coffee",
+  "shipit.coffee"
+]

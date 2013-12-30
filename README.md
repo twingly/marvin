@@ -19,3 +19,7 @@ Environment variables in use by the bot (`heroku config`).
     REDISTOGO_URL
     HUBOT_URL_TITLE_IGNORE_URLS
     HUBOT_URL_TITLE_IGNORE_USERS
+
+## Deployment
+
+    git push heroku

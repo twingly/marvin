@@ -18,3 +18,4 @@ Environment variables in use by the bot (`heroku config`).
     HUBOT_HIPCHAT_PASSWORD
     REDISTOGO_URL
     HUBOT_URL_TITLE_IGNORE_URLS
+    HUBOT_URL_TITLE_IGNORE_USERS

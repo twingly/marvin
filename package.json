@@ -20,12 +20,13 @@
     "url": "https://github.com/github/hubot.git"
   },
   "dependencies": {
-    "ntwitter": "https://github.com/sebhildebrandt/ntwitter/tarball/master",
-    "hubot": ">= 2.5.1",
-    "hubot-scripts": ">= 2.4.2",
-    "hubot-hipchat": "~2.5.1-5",
     "cheerio": "~0.12.3",
-    "hubot-url-title": "~1.2.0"
+    "hubot": ">= 2.5.1",
+    "hubot-hipchat": "~2.5.1-5",
+    "hubot-ping-standup": "0.0.3",
+    "hubot-scripts": ">= 2.4.2",
+    "hubot-url-title": "~1.2.0",
+    "ntwitter": "https://github.com/sebhildebrandt/ntwitter/tarball/master"
   },
   "engines": {
     "node": ">= 0.8.x",

@@ -22,4 +22,4 @@ Environment variables in use by the bot (`heroku config`).
 
 ## Deployment
 
-    git push heroku
+    git push heroku master

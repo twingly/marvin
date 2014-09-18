@@ -73,5 +73,8 @@ module.exports = (robot) ->
   robot.respond /pingdom show url/i, (msg) ->
     msg.reply "#{baseUrl}/pingdom/webhook/#{webhookSecret}"
 
+  robot.respond /pingdom show room/i, (msg) ->
+    robot.brain.get("pingdomRoom")
+
   robot.respond /pingdom set room (.*)/i, (msg) ->
     robot.brain.set "pingdomRoom", msg.match[1]

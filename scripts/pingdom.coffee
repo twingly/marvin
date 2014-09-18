@@ -54,10 +54,6 @@ module.exports = (robot) ->
         robot.messageRoom room, "Pingdom: #{check.name} is #{check.status}"
 
   robot.respond /pingdom show url/i, (msg) ->
-    secret = robot.brain.get("pingdomSecret")
-    unless secret
-      msg.reply "Set secret first (pingdom set secret <secret>)"
-      return
     msg.reply "#{baseUrl}/pingdom/webhook/#{webhookSecret}"
 
   robot.respond /pingdom set room (.*)/i, (msg) ->

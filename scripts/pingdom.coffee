@@ -2,7 +2,7 @@
 #   Recieve webhook notifications from Pingdom
 #
 # Dependencies:
-#   None
+#  "hipchatter": "0.1.3"
 #
 # Configuration:
 #   HUBOT_PINGDOM_USERNAME
@@ -20,7 +20,6 @@
 #
 # TODOs:
 #   Link to incident https://my.pingdom.com/ims/incidents/<incident>
-#   Colored messages
 #   Ping on-call person
 
 username = process.env.HUBOT_PINGDOM_USERNAME
@@ -28,6 +27,12 @@ password = process.env.HUBOT_PINGDOM_PASSWORD
 appKey = process.env.HUBOT_PINGDOM_APP_KEY
 webhookSecret = process.env.HUBOT_PINGDOM_WEBHOOK_SECRET
 baseUrl = process.env.HEROKU_URL or "http://localhost:8080"
+hipchatAuthToken = process.env.PINGDOM_HIPCHAT_AUTH_TOKEN
+hipchatRoomToken = process.env.PINGDOM_HIPCHAT_ROOM_TOKEN
+hipchatRoomId = process.env.PINGDOM_HIPCHAT_ROOM_ID
+
+Hipchatter = require "hipchatter"
+hipchatter = new Hipchatter hipchatAuthToken
 
 module.exports = (robot) ->
   robot.router.get "/pingdom/webhook/:secret", (req, res) ->
@@ -51,7 +56,16 @@ module.exports = (robot) ->
           robot.messageRoom room "Pingdom: error #{err}"
           return
         check = JSON.parse(body).check
-        robot.messageRoom room, "Pingdom: #{check.name} is #{check.status}"
+        color = if check.status == "down" then "red" else "green"
+
+        hipchatter.notify hipchatRoomId,
+          message: "Pingdom: #{check.name} is #{check.status}"
+          color: color
+          token: hipchatRoomToken
+        , (err) ->
+          console.log "Successfully notified the room."  unless err?
+          return
+
 
   robot.respond /pingdom show url/i, (msg) ->
     msg.reply "#{baseUrl}/pingdom/webhook/#{webhookSecret}"

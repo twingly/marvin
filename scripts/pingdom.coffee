@@ -56,7 +56,10 @@ module.exports = (robot) ->
           robot.messageRoom room "Pingdom: error #{err}"
           return
         check = JSON.parse(body).check
-        color = if check.status == "down" then "red" else "green"
+        color = switch check.status
+          when "up" then "green"
+          when "down" then "red"
+          else "yellow"
 
         hipchatter.notify hipchatRoomId,
           message: "Pingdom: #{check.name} is #{check.status}"

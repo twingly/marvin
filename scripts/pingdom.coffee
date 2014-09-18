@@ -14,6 +14,7 @@
 # Commands:
 #   hubot pingdom set room <roomid>
 #   hubot pingdom show url
+#   hubot pingdom show room
 #
 # URLs:
 #   /pingdom/webhook/:secret
@@ -40,6 +41,7 @@ module.exports = (robot) ->
       return
     message = JSON.parse(rawMessage)
     room = robot.brain.get("pingdomRoom")
+    roomId = room.split("_")[0]
     res.end ""
 
     unless webhookSecret == req.params.secret
@@ -60,7 +62,7 @@ module.exports = (robot) ->
           when "down" then "red"
           else "yellow"
 
-        hipchatter.notify robot.brain.get("pingdomRoom"),
+        hipchatter.notify roomId,
           message: "Pingdom: #{check.name} is #{check.status}"
           color: color
           token: hipchatRoomToken

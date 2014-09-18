@@ -29,7 +29,6 @@ webhookSecret = process.env.HUBOT_PINGDOM_WEBHOOK_SECRET
 baseUrl = process.env.HEROKU_URL or "http://localhost:8080"
 hipchatAuthToken = process.env.PINGDOM_HIPCHAT_AUTH_TOKEN
 hipchatRoomToken = process.env.PINGDOM_HIPCHAT_ROOM_TOKEN
-hipchatRoomId = process.env.PINGDOM_HIPCHAT_ROOM_ID
 
 Hipchatter = require "hipchatter"
 hipchatter = new Hipchatter hipchatAuthToken
@@ -61,7 +60,7 @@ module.exports = (robot) ->
           when "down" then "red"
           else "yellow"
 
-        hipchatter.notify hipchatRoomId,
+        hipchatter.notify robot.brain.get("pingdomRoom"),
           message: "Pingdom: #{check.name} is #{check.status}"
           color: color
           token: hipchatRoomToken

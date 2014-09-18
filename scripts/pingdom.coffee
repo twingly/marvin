@@ -9,10 +9,13 @@
 #   HUBOT_PINGDOM_PASSWORD
 #   HUBOT_PINGDOM_APP_KEY
 #   HUBOT_PINGDOM_WEBHOOK_SECRET
+#   HUBOT_PINGDOM_HIPCHAT_AUTH_TOKEN
+#   HUBOT_PINGDOM_HIPCHAT_ROOM_TOKEN
 #   HEROKU_URL
 #
 # Commands:
 #   hubot pingdom set room <roomid>
+#   hubot pingdom set roomapiid <room API id>
 #   hubot pingdom show url
 #   hubot pingdom show room
 #
@@ -28,8 +31,8 @@ password = process.env.HUBOT_PINGDOM_PASSWORD
 appKey = process.env.HUBOT_PINGDOM_APP_KEY
 webhookSecret = process.env.HUBOT_PINGDOM_WEBHOOK_SECRET
 baseUrl = process.env.HEROKU_URL or "http://localhost:8080"
-hipchatAuthToken = process.env.PINGDOM_HIPCHAT_AUTH_TOKEN
-hipchatRoomToken = process.env.PINGDOM_HIPCHAT_ROOM_TOKEN
+hipchatAuthToken = process.env.HUBOT_PINGDOM_HIPCHAT_AUTH_TOKEN
+hipchatRoomToken = process.env.HUBOT_PINGDOM_HIPCHAT_ROOM_TOKEN
 
 Hipchatter = require "hipchatter"
 hipchatter = new Hipchatter hipchatAuthToken
@@ -41,7 +44,7 @@ module.exports = (robot) ->
       return
     message = JSON.parse(rawMessage)
     room = robot.brain.get("pingdomRoom")
-    roomId = room.split("_")[0]
+    roomApiId = robot.brain.get("pingdomRoomApiId")
     res.end ""
 
     unless webhookSecret == req.params.secret
@@ -62,11 +65,14 @@ module.exports = (robot) ->
           when "down" then "red"
           else "yellow"
 
-        hipchatter.notify roomId,
+        console.log "Pingdom: #{check.name} is #{check.status}"
+
+        hipchatter.notify roomApiId,
           message: "Pingdom: #{check.name} is #{check.status}"
           color: color
           token: hipchatRoomToken
         , (err) ->
+          console.log err if err?
           console.log "Successfully notified the room."  unless err?
           return
 
@@ -79,3 +85,6 @@ module.exports = (robot) ->
 
   robot.respond /pingdom set room (.*)/i, (msg) ->
     robot.brain.set "pingdomRoom", msg.match[1]
+
+  robot.respond /pingdom set roomapiid (.*)/i, (msg) ->
+    robot.brain.set "pingdomRoomApiId", msg.match[1]

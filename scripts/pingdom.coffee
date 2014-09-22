@@ -45,7 +45,7 @@ module.exports = (robot) ->
     message = JSON.parse(rawMessage)
     room = robot.brain.get("pingdomRoom")
     roomApiId = robot.brain.get("pingdomRoomApiId")
-    res.end ""
+    res.end "ok"
 
     unless webhookSecret == req.params.secret
       robot.messageRoom room, "Pingdom: Wrong secret"

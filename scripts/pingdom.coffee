@@ -26,9 +26,6 @@
 #   Link to incident https://my.pingdom.com/ims/incidents/<incident>
 #   Ping on-call person
 
-username = process.env.HUBOT_PINGDOM_USERNAME
-password = process.env.HUBOT_PINGDOM_PASSWORD
-appKey = process.env.HUBOT_PINGDOM_APP_KEY
 webhookSecret = process.env.HUBOT_PINGDOM_WEBHOOK_SECRET
 baseUrl = process.env.HEROKU_URL or "http://localhost:8080"
 hipchatAuthToken = process.env.HUBOT_PINGDOM_HIPCHAT_AUTH_TOKEN
@@ -51,31 +48,24 @@ module.exports = (robot) ->
       robot.messageRoom room, "Pingdom: Wrong secret"
       return
 
-    auth = new Buffer("#{username}:#{password}").toString("base64")
-    robot.http("https://api.pingdom.com")
-      .headers(Authorization: "Basic #{auth}", "App-Key": appKey)
-      .path("/api/2.0/checks/#{message.check}")
-      .get() (err, res, body) ->
-        if err
-          robot.messageRoom room "Pingdom: error #{err}"
-          return
-        check = JSON.parse(body).check
-        color = switch check.status
-          when "up" then "green"
-          when "down" then "red"
-          else "yellow"
+    status = message.description
+    checkname = message.checkname
 
-        console.log "Pingdom: #{check.name} is #{check.status}"
+    color = switch status
+      when "up" then "green"
+      when "down" then "red"
+      else "yellow"
 
-        hipchatter.notify roomApiId,
-          message: "Pingdom: #{check.name} is #{check.status}"
-          color: color
-          token: hipchatRoomToken
-        , (err) ->
-          console.log err if err?
-          console.log "Successfully notified the room."  unless err?
-          return
+    console.log "Pingdom: #{checkname} is #{check.status}"
 
+    hipchatter.notify roomApiId,
+      message: "Pingdom: #{checkname} is #{status}"
+      color: color
+      token: hipchatRoomToken
+      , (err) ->
+      console.log err if err?
+      console.log "Successfully notified the room."  unless err?
+      return
 
   robot.respond /pingdom show url/i, (msg) ->
     msg.reply "#{baseUrl}/pingdom/webhook/#{webhookSecret}"

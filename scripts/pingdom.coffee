@@ -63,7 +63,7 @@ module.exports = (robot) ->
       message: hipchatMessage
       color: color
       token: hipchatRoomToken
-      , (err) ->
+    , (err) ->
       console.log err if err?
       console.log "Successfully notified the room."  unless err?
       return

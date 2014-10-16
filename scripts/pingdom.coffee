@@ -56,10 +56,11 @@ module.exports = (robot) ->
       when "down" then "red"
       else "yellow"
 
-    console.log "Pingdom: #{checkname} is #{check.status}"
+    hipchatMessage = "Pingdom: #{checkname} is #{status}"
+    console.log hipchatMessage
 
     hipchatter.notify roomApiId,
-      message: "Pingdom: #{checkname} is #{status}"
+      message: hipchatMessage
       color: color
       token: hipchatRoomToken
       , (err) ->

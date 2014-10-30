@@ -28,14 +28,6 @@
     "hubot-rss-reader": ">= 0.5.4",
     "hubot-scripts": ">= 2.4.2",
     "hubot-url-title": "~1.2.0",
-    "async": "*",
-    "bluebird": "^2.3",
-    "cheerio": "*",
-    "debug": "*",
-    "feedparser": "*",
-    "find-rss": "*",
-    "lodash": "*",
-    "request": "*",
     "ntwitter": "https://github.com/sebhildebrandt/ntwitter/tarball/master"
   },
   "engines": {

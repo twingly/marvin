@@ -25,6 +25,7 @@
     "hubot": ">= 2.5.1",
     "hubot-hipchat": "~2.5.1-5",
     "hubot-ping-standup": "0.0.3",
+    "hubot-rss-reader": ">= 0.5.4",
     "hubot-scripts": ">= 2.4.2",
     "hubot-url-title": "~1.2.0",
     "ntwitter": "https://github.com/sebhildebrandt/ntwitter/tarball/master"

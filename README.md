@@ -25,4 +25,10 @@ Environment variables in use by the bot (`heroku config`).
 
 ## Deployment
 
+This app is auto-deployed to Heroku. Just push to the `master` branch at GitHub to deploy:
+
+    git push
+
+You can also deploy manually, just add Heroku as a remote:
+
     git push heroku master

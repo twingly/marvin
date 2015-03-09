@@ -26,7 +26,6 @@
     "hubot-hipchat": "~2.5.1-5",
     "hubot-scripts": ">= 2.4.2",
     "hubot-standup-alarm": "0.0.3",
-    "hubot-url-title": "~1.2.0",
     "ntwitter": "https://github.com/sebhildebrandt/ntwitter/tarball/master"
   },
   "engines": {

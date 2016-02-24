@@ -20,8 +20,6 @@ Environment variables in use by the bot (`heroku config`).
     HUBOT_PINGDOM_HIPCHAT_AUTH_TOKEN
     HUBOT_PINGDOM_HIPCHAT_ROOM_TOKEN
     REDISTOGO_URL
-    HUBOT_URL_TITLE_IGNORE_URLS
-    HUBOT_URL_TITLE_IGNORE_USERS
 
 ## Deployment
 

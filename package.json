@@ -20,11 +20,11 @@
     "url": "https://github.com/github/hubot.git"
   },
   "dependencies": {
-    "cheerio": "^0.20.0",
-    "hipchatter": "^0.2.0",
+    "cheerio": "^0.22.0",
+    "hipchatter": "^0.3.1",
     "hubot": "^2.18.0",
     "hubot-hipchat": "^2.12.0-6",
-    "hubot-scripts": "^2.16.2",
+    "hubot-scripts": "^2.17.2",
     "hubot-standup-alarm": "^0.1.0",
     "ntwitter": "https://github.com/sebhildebrandt/ntwitter/tarball/master"
   },

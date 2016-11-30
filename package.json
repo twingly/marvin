@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "cheerio": "^0.22.0",
-    "hipchatter": "^0.3.1",
+    "hipchatter": "^0.3.2",
     "hubot": "^2.18.0",
     "hubot-hipchat": "^2.12.0-6",
     "hubot-scripts": "^2.17.2",

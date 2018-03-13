@@ -9,12 +9,7 @@
     "bot"
   ],
   "description": "A simple helpful robot for your Company",
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "http://github.com/github/hubot/raw/master/LICENSE"
-    }
-  ],
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/github/hubot.git"

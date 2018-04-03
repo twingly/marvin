@@ -15,6 +15,5 @@
   "facepalm.coffee",
   "giphy.coffee",
   "trolololo.coffee",
-  "redis-brain.coffee",
-  "shipit.coffee"
+  "redis-brain.coffee"
 ]
